@@ -1,0 +1,102 @@
+ALGORITHM tasks1
+VAR
+    a,x,y,z:INTEGER;
+BEGIN
+    Read(x)
+    Read(y)
+    Read(z)
+    a:=x;
+    x:=y;
+    y:=z;
+    z:=a;
+    Write(x)
+    Write(y)
+    Write(z)
+
+END
+
+ALGORITHM task2
+VAR
+    cost_k,cost_d,kilomtres:FLOAT;
+    days:INTEGER;
+    
+CONST
+    r1 : FLOAT := 0.7;
+    r2 : FLOAT := 0.4;
+    r3 : FLOAT := 0.2;
+    p_d : FLOAT := 100;
+    ins : FLOAT := 0.3;
+    VAT : FLOAT := 0.18;
+BEGIN
+    Write("donner le nombre de jours");
+    Read(days)
+    Write("donner le nombre de kilomtre");
+    Read(kilomtres)
+    //rental by kolometre
+    IF (kilomtres<100) THEN
+        cost_k=(r1*kilomtres +(days*ins))*(1+VAT);
+    ELSE_IF (kilomtres>101 AND kilomtres<1000) THEN
+        cost_k=(100*r1+ r2*(kilomtres-100)  +(days*ins))*(1+VAT);
+    ELSE
+        cost_k=(100*r1+ r2*900+r3*(kilomtres-1000)  +(days*ins))*(1+VAT);
+    END_IF
+    //daily rate
+    cost_d=(p_d*days+days*ins)*(1+VAT);
+    IF (cost_k<cost_d) THEN
+        Write("cost by kilometre is better");
+        ELSE
+        Write("cost by days is better");
+    END_IF
+    Write(cost_k)
+    Write(cost_d)
+END
+
+
+ALGORITHM task3
+VAR
+    number,day,month,year:INTEGER;
+BEGIN
+    
+    year=number % 100;
+    day=number/10000;
+    month=(number/100) % 100;
+    
+    SWITCH (month) DO
+        case 1 : Write("Month : january")
+        case 2 : Write("Month : Febrary")
+        case 3 : Write("Month : march")
+        case 4 : Write("Month : april")
+        case 5 : Write("Month : may")
+        case 6 : Write("Month : june")
+        case 7 : Write("Month : july")
+        case 8 : Write("Month : august")
+        case 9 : Write("Month : septembre")
+        case 10 : Write("Month : october")
+        case 11 : Write("Month : november")
+        case 12 : Write("Month : december")
+        default : Write("this is not a month")
+    END_SWITCH
+
+    // date=STRING(date)
+    // FOR i FROM 0 TO date.length STEP step  DO
+    //     Write("day :"date[0]+date[1])
+
+    //     SWITCH (date[2]+date[3]) DO
+    //     case 1 : Write("Month : january")
+    //     case 2 : Write("Month : Febrary")
+    //     case 3 : Write("Month : march")
+    //     case 4 : Write("Month : april")
+    //     case 5 : Write("Month : may")
+    //     case 6 : Write("Month : june")
+    //     case 7 : Write("Month : july")
+    //     case 8 : Write("Month : august")
+    //     case 9 : Write("Month : septembre")
+    //     case 10 : Write("Month : october")
+    //     case 11 : Write("Month : november")
+    //     case 12 : Write("Month : december")
+    //     default : Write("this is not a month")
+    //     END_SWITCH
+
+    // Write("20"+date[4]+date[5])
+    // END_FOR
+END
